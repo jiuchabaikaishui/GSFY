@@ -10,7 +10,7 @@
 #import "GPDayModel.h"
 
 //#define kGPFXCachePath             @"$(PROJECT_DIR)/GPCodeCache"
-#define kGPFXCachePath      @"/Users/apple/MyWork/GSFY/GPFX/GPCodeCache"
+#define kGPFXCachePath      @"/Users/apple/MyWork/GSFY/GPFX/GPFX/GPCodeCache"
 
 @interface GPCodeManager ()
 

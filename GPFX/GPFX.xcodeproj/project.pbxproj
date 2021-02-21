@@ -136,11 +136,11 @@
 		18DBD45325E2473A00735E15 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				18DBD45825E247AF00735E15 /* ViewController */,
-				18DBD45525E2473A00735E15 /* Tools */,
 				18DBD45625E2473A00735E15 /* Model */,
 				18DBD45725E2473A00735E15 /* View */,
 				18DBD45425E2473A00735E15 /* ViewModel */,
+				18DBD45825E247AF00735E15 /* ViewController */,
+				18DBD45525E2473A00735E15 /* Tools */,
 			);
 			path = Class;
 			sourceTree = "<group>";

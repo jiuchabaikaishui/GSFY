@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		185C9B1325B5CE6000AEED03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9B1225B5CE6000AEED03 /* AppDelegate.m */; };
+		185C9B1925B5CE6000AEED03 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9B1825B5CE6000AEED03 /* ViewController.m */; };
+		185C9B1C25B5CE6000AEED03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185C9B1A25B5CE6000AEED03 /* Main.storyboard */; };
+		185C9B1E25B5CE6200AEED03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185C9B1D25B5CE6200AEED03 /* Assets.xcassets */; };
+		185C9B2125B5CE6200AEED03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185C9B1F25B5CE6200AEED03 /* LaunchScreen.storyboard */; };
+		185C9B2425B5CE6200AEED03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9B2325B5CE6200AEED03 /* main.m */; };
+		1861ECC425E2BB0000C77ACC /* GPDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1861ECC325E2BB0000C77ACC /* GPDayModel.m */; };
+		18DBD44B25E246A300735E15 /* 000001.csv in Resources */ = {isa = PBXBuildFile; fileRef = 18DBD44625E246A300735E15 /* 000001.csv */; };
+		18DBD44C25E246A300735E15 /* GPCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DBD44725E246A300735E15 /* GPCodeManager.m */; };
+		18DBD44D25E246A300735E15 /* 000001.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18DBD44825E246A300735E15 /* 000001.txt */; };
+		18DBD44E25E246A300735E15 /* 1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18DBD44925E246A300735E15 /* 1.txt */; };
+		18DBD45B25E247EB00735E15 /* GPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DBD45A25E247EB00735E15 /* GPBaseViewController.m */; };
+		18DBD45E25E2483200735E15 /* GPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DBD45D25E2483200735E15 /* GPMainViewController.m */; };
+		6632940B9C6BFAAB00EC71C2 /* Pods_GPFX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EBE10BAB888CB7EC0B66E0 /* Pods_GPFX.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		185C9B0E25B5CE6000AEED03 /* GPFX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPFX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		185C9B1125B5CE6000AEED03 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		185C9B1225B5CE6000AEED03 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		185C9B1725B5CE6000AEED03 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		185C9B1825B5CE6000AEED03 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		185C9B1B25B5CE6000AEED03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		185C9B1D25B5CE6200AEED03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		185C9B2025B5CE6200AEED03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		185C9B2225B5CE6200AEED03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		185C9B2325B5CE6200AEED03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1861ECC225E2BB0000C77ACC /* GPDayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPDayModel.h; sourceTree = "<group>"; };
+		1861ECC325E2BB0000C77ACC /* GPDayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPDayModel.m; sourceTree = "<group>"; };
+		18DBD44625E246A300735E15 /* 000001.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 000001.csv; sourceTree = "<group>"; };
+		18DBD44725E246A300735E15 /* GPCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCodeManager.m; sourceTree = "<group>"; };
+		18DBD44825E246A300735E15 /* 000001.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 000001.txt; sourceTree = "<group>"; };
+		18DBD44925E246A300735E15 /* 1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.txt; sourceTree = "<group>"; };
+		18DBD44A25E246A300735E15 /* GPCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPCodeManager.h; sourceTree = "<group>"; };
+		18DBD45925E247EB00735E15 /* GPBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPBaseViewController.h; sourceTree = "<group>"; };
+		18DBD45A25E247EB00735E15 /* GPBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPBaseViewController.m; sourceTree = "<group>"; };
+		18DBD45C25E2483200735E15 /* GPMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMainViewController.h; sourceTree = "<group>"; };
+		18DBD45D25E2483200735E15 /* GPMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMainViewController.m; sourceTree = "<group>"; };
+		51E73CCE6928465101B302F4 /* Pods-GPFX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPFX.debug.xcconfig"; path = "Target Support Files/Pods-GPFX/Pods-GPFX.debug.xcconfig"; sourceTree = "<group>"; };
+		65EBE10BAB888CB7EC0B66E0 /* Pods_GPFX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPFX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4C6AC139C08879348C098C4 /* Pods-GPFX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPFX.release.xcconfig"; path = "Target Support Files/Pods-GPFX/Pods-GPFX.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		185C9B0B25B5CE6000AEED03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6632940B9C6BFAAB00EC71C2 /* Pods_GPFX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		185C9B0525B5CE6000AEED03 = {
+			isa = PBXGroup;
+			children = (
+				185C9B1025B5CE6000AEED03 /* GPFX */,
+				185C9B0F25B5CE6000AEED03 /* Products */,
+				D55F2FFBE8110121970D8407 /* Pods */,
+				359CD391029AD08FBACD0B9F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		185C9B0F25B5CE6000AEED03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				185C9B0E25B5CE6000AEED03 /* GPFX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		185C9B1025B5CE6000AEED03 /* GPFX */ = {
+			isa = PBXGroup;
+			children = (
+				18DBD45325E2473A00735E15 /* Class */,
+				18DBD44525E246A300735E15 /* Source */,
+				18DBD44425E243D100735E15 /* System */,
+			);
+			path = GPFX;
+			sourceTree = "<group>";
+		};
+		18DBD44425E243D100735E15 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				185C9B1125B5CE6000AEED03 /* AppDelegate.h */,
+				185C9B1225B5CE6000AEED03 /* AppDelegate.m */,
+				185C9B1725B5CE6000AEED03 /* ViewController.h */,
+				185C9B1825B5CE6000AEED03 /* ViewController.m */,
+				185C9B1A25B5CE6000AEED03 /* Main.storyboard */,
+				185C9B1D25B5CE6200AEED03 /* Assets.xcassets */,
+				185C9B1F25B5CE6200AEED03 /* LaunchScreen.storyboard */,
+				185C9B2225B5CE6200AEED03 /* Info.plist */,
+				185C9B2325B5CE6200AEED03 /* main.m */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		18DBD44525E246A300735E15 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				18DBD44625E246A300735E15 /* 000001.csv */,
+				18DBD44825E246A300735E15 /* 000001.txt */,
+				18DBD44925E246A300735E15 /* 1.txt */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		18DBD45325E2473A00735E15 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				18DBD45825E247AF00735E15 /* ViewController */,
+				18DBD45525E2473A00735E15 /* Tools */,
+				18DBD45625E2473A00735E15 /* Model */,
+				18DBD45725E2473A00735E15 /* View */,
+				18DBD45425E2473A00735E15 /* ViewModel */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		18DBD45425E2473A00735E15 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				18DBD44A25E246A300735E15 /* GPCodeManager.h */,
+				18DBD44725E246A300735E15 /* GPCodeManager.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		18DBD45525E2473A00735E15 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		18DBD45625E2473A00735E15 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1861ECC225E2BB0000C77ACC /* GPDayModel.h */,
+				1861ECC325E2BB0000C77ACC /* GPDayModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18DBD45725E2473A00735E15 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18DBD45825E247AF00735E15 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18DBD45925E247EB00735E15 /* GPBaseViewController.h */,
+				18DBD45A25E247EB00735E15 /* GPBaseViewController.m */,
+				18DBD45C25E2483200735E15 /* GPMainViewController.h */,
+				18DBD45D25E2483200735E15 /* GPMainViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		359CD391029AD08FBACD0B9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65EBE10BAB888CB7EC0B66E0 /* Pods_GPFX.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D55F2FFBE8110121970D8407 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				51E73CCE6928465101B302F4 /* Pods-GPFX.debug.xcconfig */,
+				B4C6AC139C08879348C098C4 /* Pods-GPFX.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		185C9B0D25B5CE6000AEED03 /* GPFX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 185C9B2725B5CE6200AEED03 /* Build configuration list for PBXNativeTarget "GPFX" */;
+			buildPhases = (
+				77A9AA107A85E155792FFD33 /* [CP] Check Pods Manifest.lock */,
+				185C9B0A25B5CE6000AEED03 /* Sources */,
+				185C9B0B25B5CE6000AEED03 /* Frameworks */,
+				185C9B0C25B5CE6000AEED03 /* Resources */,
+				C568B7900FB2F3BA1AAB30BB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GPFX;
+			productName = GPFX;
+			productReference = 185C9B0E25B5CE6000AEED03 /* GPFX.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		185C9B0625B5CE6000AEED03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = QSP;
+				TargetAttributes = {
+					185C9B0D25B5CE6000AEED03 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 185C9B0925B5CE6000AEED03 /* Build configuration list for PBXProject "GPFX" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 185C9B0525B5CE6000AEED03;
+			productRefGroup = 185C9B0F25B5CE6000AEED03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				185C9B0D25B5CE6000AEED03 /* GPFX */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		185C9B0C25B5CE6000AEED03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18DBD44D25E246A300735E15 /* 000001.txt in Resources */,
+				185C9B2125B5CE6200AEED03 /* LaunchScreen.storyboard in Resources */,
+				18DBD44B25E246A300735E15 /* 000001.csv in Resources */,
+				185C9B1E25B5CE6200AEED03 /* Assets.xcassets in Resources */,
+				18DBD44E25E246A300735E15 /* 1.txt in Resources */,
+				185C9B1C25B5CE6000AEED03 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		77A9AA107A85E155792FFD33 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GPFX-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C568B7900FB2F3BA1AAB30BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GPFX/Pods-GPFX-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GPFX/Pods-GPFX-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GPFX/Pods-GPFX-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		185C9B0A25B5CE6000AEED03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18DBD45B25E247EB00735E15 /* GPBaseViewController.m in Sources */,
+				1861ECC425E2BB0000C77ACC /* GPDayModel.m in Sources */,
+				185C9B1925B5CE6000AEED03 /* ViewController.m in Sources */,
+				18DBD44C25E246A300735E15 /* GPCodeManager.m in Sources */,
+				18DBD45E25E2483200735E15 /* GPMainViewController.m in Sources */,
+				185C9B1325B5CE6000AEED03 /* AppDelegate.m in Sources */,
+				185C9B2425B5CE6200AEED03 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		185C9B1A25B5CE6000AEED03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				185C9B1B25B5CE6000AEED03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		185C9B1F25B5CE6200AEED03 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				185C9B2025B5CE6200AEED03 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		185C9B2525B5CE6200AEED03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		185C9B2625B5CE6200AEED03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		185C9B2825B5CE6200AEED03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51E73CCE6928465101B302F4 /* Pods-GPFX.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GPFX/System/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qq.781849568.GPFX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		185C9B2925B5CE6200AEED03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4C6AC139C08879348C098C4 /* Pods-GPFX.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GPFX/System/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qq.781849568.GPFX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		185C9B0925B5CE6000AEED03 /* Build configuration list for PBXProject "GPFX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				185C9B2525B5CE6200AEED03 /* Debug */,
+				185C9B2625B5CE6200AEED03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		185C9B2725B5CE6200AEED03 /* Build configuration list for PBXNativeTarget "GPFX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				185C9B2825B5CE6200AEED03 /* Debug */,
+				185C9B2925B5CE6200AEED03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 185C9B0625B5CE6000AEED03 /* Project object */;
+}

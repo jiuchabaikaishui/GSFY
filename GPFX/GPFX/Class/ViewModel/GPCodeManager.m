@@ -10,7 +10,7 @@
 #import "GPDayModel.h"
 
 //#define kGPFXCachePath             @"$(PROJECT_DIR)/GPCodeCache"
-#define kGPFXCachePath      @"/Users/apple/Desktop/GPFX/GPCodeCache"
+#define kGPFXCachePath      @"/Users/apple/MyWork/GSFY/GPFX/GPCodeCache"
 
 @interface GPCodeManager ()
 
@@ -111,7 +111,7 @@
         if (labelCode == nil) {
             return;
         }
-        NSString *path = [NSString stringWithFormat:@"http://quotes.money.163.com/service/chddata.html?code=%@&start=20210208&end=20210221&fields=TCLOSE;HIGH;LOW;TOPEN;LCLOSE;CHG;PCHG", labelCode];
+        NSString *path = [NSString stringWithFormat:@"http://quotes.money.163.com/service/chddata.html?code=%@&start=20210210&end=20210221&fields=TCLOSE;HIGH;LOW;TOPEN;LCLOSE;CHG;PCHG", labelCode];
         NSURL *url = [NSURL URLWithString:path];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -158,11 +158,11 @@
                                     down = model.open;
                                 }
                                 float value = up - down;
-                                if (value > 0 && down - model.min > value*3) {
+                                if (value > 0 && down - model.min > value*5) {
                                     [self.allUp addObject:code];
                                     break;
                                 }
-                                if (value > 0 && model.max - up > value*3) {
+                                if (value > 0 && model.max - up > value*5) {
                                     [self.allDown addObject:code];
                                     break;
                                 }

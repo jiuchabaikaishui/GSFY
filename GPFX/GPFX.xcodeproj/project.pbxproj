@@ -14,6 +14,9 @@
 		185C9B2125B5CE6200AEED03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185C9B1F25B5CE6200AEED03 /* LaunchScreen.storyboard */; };
 		185C9B2425B5CE6200AEED03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9B2325B5CE6200AEED03 /* main.m */; };
 		1861ECC425E2BB0000C77ACC /* GPDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1861ECC325E2BB0000C77ACC /* GPDayModel.m */; };
+		1861ECD725E30B3300C77ACC /* AllUp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1861ECD425E30B3300C77ACC /* AllUp.plist */; };
+		1861ECD825E30B3300C77ACC /* AllDown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1861ECD525E30B3300C77ACC /* AllDown.plist */; };
+		1861ECD925E30B3300C77ACC /* AllCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1861ECD625E30B3300C77ACC /* AllCode.plist */; };
 		18DBD44B25E246A300735E15 /* 000001.csv in Resources */ = {isa = PBXBuildFile; fileRef = 18DBD44625E246A300735E15 /* 000001.csv */; };
 		18DBD44C25E246A300735E15 /* GPCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DBD44725E246A300735E15 /* GPCodeManager.m */; };
 		18DBD44D25E246A300735E15 /* 000001.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18DBD44825E246A300735E15 /* 000001.txt */; };
@@ -36,6 +39,9 @@
 		185C9B2325B5CE6200AEED03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1861ECC225E2BB0000C77ACC /* GPDayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPDayModel.h; sourceTree = "<group>"; };
 		1861ECC325E2BB0000C77ACC /* GPDayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPDayModel.m; sourceTree = "<group>"; };
+		1861ECD425E30B3300C77ACC /* AllUp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AllUp.plist; sourceTree = "<group>"; };
+		1861ECD525E30B3300C77ACC /* AllDown.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AllDown.plist; sourceTree = "<group>"; };
+		1861ECD625E30B3300C77ACC /* AllCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AllCode.plist; sourceTree = "<group>"; };
 		18DBD44625E246A300735E15 /* 000001.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 000001.csv; sourceTree = "<group>"; };
 		18DBD44725E246A300735E15 /* GPCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPCodeManager.m; sourceTree = "<group>"; };
 		18DBD44825E246A300735E15 /* 000001.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 000001.txt; sourceTree = "<group>"; };
@@ -84,10 +90,21 @@
 			isa = PBXGroup;
 			children = (
 				18DBD45325E2473A00735E15 /* Class */,
+				1861ECD325E30B3300C77ACC /* GPCodeCache */,
 				18DBD44525E246A300735E15 /* Source */,
 				18DBD44425E243D100735E15 /* System */,
 			);
 			path = GPFX;
+			sourceTree = "<group>";
+		};
+		1861ECD325E30B3300C77ACC /* GPCodeCache */ = {
+			isa = PBXGroup;
+			children = (
+				1861ECD425E30B3300C77ACC /* AllUp.plist */,
+				1861ECD525E30B3300C77ACC /* AllDown.plist */,
+				1861ECD625E30B3300C77ACC /* AllCode.plist */,
+			);
+			path = GPCodeCache;
 			sourceTree = "<group>";
 		};
 		18DBD44425E243D100735E15 /* System */ = {
@@ -247,8 +264,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1861ECD825E30B3300C77ACC /* AllDown.plist in Resources */,
+				1861ECD925E30B3300C77ACC /* AllCode.plist in Resources */,
 				18DBD44D25E246A300735E15 /* 000001.txt in Resources */,
 				185C9B2125B5CE6200AEED03 /* LaunchScreen.storyboard in Resources */,
+				1861ECD725E30B3300C77ACC /* AllUp.plist in Resources */,
 				18DBD44B25E246A300735E15 /* 000001.csv in Resources */,
 				185C9B1E25B5CE6200AEED03 /* Assets.xcassets in Resources */,
 				18DBD44E25E246A300735E15 /* 1.txt in Resources */,

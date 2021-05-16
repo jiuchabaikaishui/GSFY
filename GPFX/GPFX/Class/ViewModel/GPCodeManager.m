@@ -102,7 +102,27 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self readData:code from:location first:first];
+                NSArray *data = [self readData:code from:location first:first];
+                for (GPDayModel *model in data) {
+                    float up;
+                    float down;
+                    if (model.TOPEN > model.TCLOSE) {
+                        up = model.TOPEN;
+                        down = model.TCLOSE;
+                    } else {
+                        up = model.TCLOSE;
+                        down = model.TOPEN;
+                    }
+                    float value = up - down;
+                    if (value > 0 && down - model.LOW > value*3) {
+                        [self.allUp addObject:code];
+                        break;
+                    }
+                    if (value > 0 && model.HIGH - up > value*3) {
+                        [self.allDown addObject:code];
+                        break;
+                    }
+                }
             });
         }];
         [task resume];
@@ -212,24 +232,6 @@
                     model.TCAP = [[data objectAtIndex:13] floatValue];
                     model.MCAP = [[data objectAtIndex:14] floatValue];
                     [result addObject:model];
-                    float up;
-                    float down;
-                    if (model.TOPEN > model.TCLOSE) {
-                        up = model.TOPEN;
-                        down = model.TCLOSE;
-                    } else {
-                        up = model.TCLOSE;
-                        down = model.TOPEN;
-                    }
-                    float value = up - down;
-                    if (value > 0 && down - model.LOW > value*3) {
-                        [self.allUp addObject:code];
-                        break;
-                    }
-                    if (value > 0 && model.HIGH - up > value*3) {
-                        [self.allDown addObject:code];
-                        break;
-                    }
                 }
             }
             [self errorAndCompletionControl:code];

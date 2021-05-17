@@ -83,102 +83,47 @@
     return nil;
 }
 - (NSArray *)search600CodeFromCache:(BOOL)cache {
-    [self xxx:@"600000" first:YES];
+    [self requestData:@"600000" first:YES];
     
     return nil;
 }
 
-- (void)xxx:(NSString *)code first:(BOOL)first {
+/// 请求数据
+/// @param code 股票代码
+/// @param first 是否为第一次请求
+- (void)requestData:(NSString *)code first:(BOOL)first {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSString *labelCode = nil;
-        if ([code hasPrefix:@"6"] || [code hasPrefix:@"7"]) { // 上海
-            if (first) {
-                labelCode = [NSString stringWithFormat:@"0%@", code];
-            } else {
-                labelCode = [NSString stringWithFormat:@"1%@", code];
-            }
-        } else if ([code hasPrefix:@"0"]) { // 深圳
-            if (first) {
-                labelCode = [NSString stringWithFormat:@"1%@", code];
-            } else {
-                labelCode = [NSString stringWithFormat:@"0%@", code];
-            }
-        } else if ([code hasPrefix:@"002"] || [code hasPrefix:@"300"]) { // 中小板/创业板
-            if (first) { // 上海
-                labelCode = [NSString stringWithFormat:@"0%@", code];
-            } else { // 深圳
-                labelCode = [NSString stringWithFormat:@"1%@", code];
-            }
-        }
+        NSString *labelCode = [self labelCode:code first:first];
         if (labelCode == nil) {
             return;
         }
-        NSString *path = [NSString stringWithFormat:@"http://quotes.money.163.com/service/chddata.html?code=%@&start=20210210&end=20210221&fields=TCLOSE;HIGH;LOW;TOPEN;LCLOSE;CHG;PCHG", labelCode];
+        
+//        NSString *path = [NSString stringWithFormat:@"http://quotes.money.163.com/service/chddata.html?code=%@&start=20210208&end=20210221&fields=TCLOSE;HIGH;LOW;TOPEN;LCLOSE;CHG;PCHG", labelCode];
+        NSString *path = [NSString stringWithFormat:@"http://quotes.money.163.com/service/chddata.html?code=%@&start=20210208&end=20210221", labelCode];
         NSURL *url = [NSURL URLWithString:path];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                NSError *readError = nil;
-                NSString *str = [[NSString alloc] initWithContentsOfURL:location encoding:encode error:&readError];
-                if (readError) {
-                    NSLog(@"%@读取失败！", code);
-                    if (self.readErrorCount < 3) {
-                        self.readErrorCount++;
-                        [self xxx:code first:first];
+                NSArray *data = [self readData:code from:location first:first];
+                for (GPDayModel *model in data) {
+                    float up;
+                    float down;
+                    if (model.TOPEN > model.TCLOSE) {
+                        up = model.TOPEN;
+                        down = model.TCLOSE;
                     } else {
-                        self.readErrorCount = 0;
-                        [self yyy:code];
+                        up = model.TCLOSE;
+                        down = model.TOPEN;
                     }
-                } else {
-                    NSArray *days = [str componentsSeparatedByString:@"\n"];
-                    if (days.count > 2) { // 取出第一排表头
-                        NSLog(@"----%@----", code);
-                        [self.allCode addObject:code];
-                        for (int i = 2; i < days.count; i++) {
-                            NSString *day = [days objectAtIndex:i];
-                            NSArray *data = [day componentsSeparatedByString:@","];
-                            if (data.count >= 10) {
-                                GPDayModel *model = [[GPDayModel alloc] init];
-                                model.date = [data objectAtIndex:0];
-                                model.code = [data objectAtIndex:1];
-                                model.name = [data objectAtIndex:2];
-                                model.close = [[data objectAtIndex:3] floatValue];
-                                model.max = [[data objectAtIndex:4] floatValue];
-                                model.min = [[data objectAtIndex:5] floatValue];
-                                model.open = [[data objectAtIndex:6] floatValue];
-                                model.lastClose = [[data objectAtIndex:7] floatValue];
-                                model.chageAmount = [[data objectAtIndex:8] floatValue];
-                                model.chageRate = [[data objectAtIndex:9] floatValue];
-                                float up;
-                                float down;
-                                if (model.open > model.close) {
-                                    up = model.open;
-                                    down = model.close;
-                                } else {
-                                    up = model.close;
-                                    down = model.open;
-                                }
-                                float value = up - down;
-                                if (value > 0 && down - model.min > value*5) {
-                                    [self.allUp addObject:code];
-                                    break;
-                                }
-                                if (value > 0 && model.max - up > value*5) {
-                                    [self.allDown addObject:code];
-                                    break;
-                                }
-                            }
-                        }
-                        [self yyy:code];
-                    } else {
-                        if (first) {
-                            [self xxx:code first:NO];
-                        } else {
-                            [self yyy:code];
-                        }
+                    float value = up - down;
+                    if (value > 0 && down - model.LOW > value*3) {
+                        [self.allUp addObject:code];
+                        break;
                     }
-        //            NSLog(@"数据：\n%@", days);
+                    if (value > 0 && model.HIGH - up > value*3) {
+                        [self.allDown addObject:code];
+                        break;
+                    }
                 }
             });
         }];
@@ -186,7 +131,9 @@
     });
 }
 
-- (void)yyy:(NSString *)code {
+/// 错误或者完成处理
+/// @param code 股票代码
+- (void)errorAndCompletionControl:(NSString *)code {
     self.count++;
     NSString *nextCode = nil;
     if (self.count < 1000) {
@@ -212,8 +159,94 @@
     }
     
     if (nextCode) {
-        [self xxx:nextCode first:YES];
+        [self requestData:nextCode first:YES];
     }
+}
+
+/// 获取带标签的股票代码（备注股票代码首位是0则需添加一个1，非0则需添加一个0）
+/// @param code 股票代码
+/// @param first 是否为第一次获取
+- (NSString *)labelCode:(NSString *)code first:(BOOL)first {
+    NSString *labelCode = nil;
+    if ([code hasPrefix:@"6"] || [code hasPrefix:@"7"]) { // 上海
+        if (first) {
+            labelCode = [NSString stringWithFormat:@"0%@", code];
+        } else {
+            labelCode = [NSString stringWithFormat:@"1%@", code];
+        }
+    } else if ([code hasPrefix:@"0"]) { // 深圳
+        if (first) {
+            labelCode = [NSString stringWithFormat:@"1%@", code];
+        } else {
+            labelCode = [NSString stringWithFormat:@"0%@", code];
+        }
+    } else if ([code hasPrefix:@"002"] || [code hasPrefix:@"300"]) { // 中小板/创业板
+        if (first) { // 上海
+            labelCode = [NSString stringWithFormat:@"0%@", code];
+        } else { // 深圳
+            labelCode = [NSString stringWithFormat:@"1%@", code];
+        }
+    }
+    
+    return labelCode;
+}
+
+/// 解析数据
+/// @param url 数据地址
+/// @param first 是否第一次请求数据
+- (NSArray *)readData:(NSString *)code from:(NSURL *)url first:(BOOL)first {
+    unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSError *readError = nil;
+    NSString *str = [[NSString alloc] initWithContentsOfURL:url encoding:encode error:&readError];
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:1];
+    if (readError) {
+        NSLog(@"%@读取失败！", code);
+        if (self.readErrorCount < 3) {
+            self.readErrorCount++;
+            [self requestData:code first:first];
+        } else {
+            self.readErrorCount = 0;
+            [self errorAndCompletionControl:code];
+        }
+    } else {
+        NSArray *days = [str componentsSeparatedByString:@"\n"];
+        if (days.count > 2) { // 取出第一排表头
+            NSLog(@"----%@----", code);
+            [self.allCode addObject:code];
+            for (int i = 2; i < days.count; i++) {
+                NSString *day = [days objectAtIndex:i];
+                NSArray *data = [day componentsSeparatedByString:@","];
+                if (data.count >= 10) {
+                    GPDayModel *model = [[GPDayModel alloc] init];
+                    model.date = [data objectAtIndex:0];
+                    model.code = [data objectAtIndex:1];
+                    model.name = [data objectAtIndex:2];
+                    model.TCLOSE = [[data objectAtIndex:3] floatValue];
+                    model.HIGH = [[data objectAtIndex:4] floatValue];
+                    model.LOW = [[data objectAtIndex:5] floatValue];
+                    model.TOPEN = [[data objectAtIndex:6] floatValue];
+                    model.LCLOSE = [[data objectAtIndex:7] floatValue];
+                    model.CHG = [[data objectAtIndex:8] floatValue];
+                    model.PCHG = [[data objectAtIndex:9] floatValue];
+                    model.TURNOVER = [[data objectAtIndex:10] floatValue];
+                    model.VOTURNOVER = [[data objectAtIndex:11] floatValue];
+                    model.VATURNOVER = [[data objectAtIndex:12] floatValue];
+                    model.TCAP = [[data objectAtIndex:13] floatValue];
+                    model.MCAP = [[data objectAtIndex:14] floatValue];
+                    [result addObject:model];
+                }
+            }
+            [self errorAndCompletionControl:code];
+        } else {
+            if (first) {
+                [self requestData:code first:NO];
+            } else {
+                [self errorAndCompletionControl:code];
+            }
+        }
+    }
+    
+    return result;
 }
 
 @end

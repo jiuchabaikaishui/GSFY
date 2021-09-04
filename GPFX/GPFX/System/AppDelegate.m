@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GPMainViewController.h"
+#import "GPAllViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,11 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     GPMainViewController *main = [[GPMainViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
+    UINavigationController *mainNav = [[UINavigationController alloc] initWithRootViewController:main];
+    
+    GPAllViewController *all = [[GPAllViewController alloc] init];
+    UINavigationController *allNav = [[UINavigationController alloc] initWithRootViewController:all];
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[mainNav, allNav];
+    
     
     self.window = [[UIWindow alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = nav;
+    self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     
     return YES;

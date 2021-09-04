@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GPDayModel.h"
 
 @interface GPCodeManager : NSObject
 
@@ -22,6 +23,14 @@
 /// 检索深市新股股票代码（003打头）
 /// @param cache 是否从缓存检索
 - (NSArray *)searchSZNCodeFromCache:(BOOL)cache;
+
+/// 请求数据
+/// @param code 代码
+/// @param start 开始日期
+/// @param end 结束日期
+/// @param success 成功回调
+/// @param fail 失败回调
+- (void)requestData:(NSString *)code startDate:(NSString *)start endDate:(NSString *)end successful:(void(^)(NSArray<GPDayModel *> *models))success failure:(void (^)(NSError *error))fail;
 
 @end
 

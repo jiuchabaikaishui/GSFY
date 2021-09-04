@@ -24,6 +24,11 @@
 		18DBD45B25E247EB00735E15 /* GPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DBD45A25E247EB00735E15 /* GPBaseViewController.m */; };
 		18DBD45E25E2483200735E15 /* GPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DBD45D25E2483200735E15 /* GPMainViewController.m */; };
 		6632940B9C6BFAAB00EC71C2 /* Pods_GPFX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EBE10BAB888CB7EC0B66E0 /* Pods_GPFX.framework */; };
+		6E47175A265BFDDE00174EA3 /* GPRequestArgumentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E471759265BFDDE00174EA3 /* GPRequestArgumentModel.m */; };
+		6E65BF1D2652631A001FFDC1 /* GPAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E65BF1C2652631A001FFDC1 /* GPAllViewController.m */; };
+		6EF204C226E34A0D00EE0586 /* GPDayLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF204C126E34A0D00EE0586 /* GPDayLineViewController.m */; };
+		6EF204C626E34A7300EE0586 /* GPDayLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF204C526E34A7300EE0586 /* GPDayLineView.m */; };
+		6EF204D426E34DBC00EE0586 /* GPDayLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF204D326E34DBC00EE0586 /* GPDayLineModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +58,16 @@
 		18DBD45D25E2483200735E15 /* GPMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMainViewController.m; sourceTree = "<group>"; };
 		51E73CCE6928465101B302F4 /* Pods-GPFX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPFX.debug.xcconfig"; path = "Target Support Files/Pods-GPFX/Pods-GPFX.debug.xcconfig"; sourceTree = "<group>"; };
 		65EBE10BAB888CB7EC0B66E0 /* Pods_GPFX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPFX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E471758265BFDDE00174EA3 /* GPRequestArgumentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRequestArgumentModel.h; sourceTree = "<group>"; };
+		6E471759265BFDDE00174EA3 /* GPRequestArgumentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRequestArgumentModel.m; sourceTree = "<group>"; };
+		6E65BF1B2652631A001FFDC1 /* GPAllViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAllViewController.h; sourceTree = "<group>"; };
+		6E65BF1C2652631A001FFDC1 /* GPAllViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAllViewController.m; sourceTree = "<group>"; };
+		6EF204C026E34A0D00EE0586 /* GPDayLineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPDayLineViewController.h; sourceTree = "<group>"; };
+		6EF204C126E34A0D00EE0586 /* GPDayLineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPDayLineViewController.m; sourceTree = "<group>"; };
+		6EF204C426E34A7300EE0586 /* GPDayLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPDayLineView.h; sourceTree = "<group>"; };
+		6EF204C526E34A7300EE0586 /* GPDayLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPDayLineView.m; sourceTree = "<group>"; };
+		6EF204D226E34DBC00EE0586 /* GPDayLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPDayLineModel.h; sourceTree = "<group>"; };
+		6EF204D326E34DBC00EE0586 /* GPDayLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPDayLineModel.m; sourceTree = "<group>"; };
 		B4C6AC139C08879348C098C4 /* Pods-GPFX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPFX.release.xcconfig"; path = "Target Support Files/Pods-GPFX/Pods-GPFX.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +181,10 @@
 			children = (
 				1861ECC225E2BB0000C77ACC /* GPDayModel.h */,
 				1861ECC325E2BB0000C77ACC /* GPDayModel.m */,
+				6E471758265BFDDE00174EA3 /* GPRequestArgumentModel.h */,
+				6E471759265BFDDE00174EA3 /* GPRequestArgumentModel.m */,
+				6EF204D226E34DBC00EE0586 /* GPDayLineModel.h */,
+				6EF204D326E34DBC00EE0586 /* GPDayLineModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,6 +192,8 @@
 		18DBD45725E2473A00735E15 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6EF204C426E34A7300EE0586 /* GPDayLineView.h */,
+				6EF204C526E34A7300EE0586 /* GPDayLineView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +205,10 @@
 				18DBD45A25E247EB00735E15 /* GPBaseViewController.m */,
 				18DBD45C25E2483200735E15 /* GPMainViewController.h */,
 				18DBD45D25E2483200735E15 /* GPMainViewController.m */,
+				6E65BF1B2652631A001FFDC1 /* GPAllViewController.h */,
+				6E65BF1C2652631A001FFDC1 /* GPAllViewController.m */,
+				6EF204C026E34A0D00EE0586 /* GPDayLineViewController.h */,
+				6EF204C126E34A0D00EE0586 /* GPDayLineViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -328,10 +353,15 @@
 				18DBD45B25E247EB00735E15 /* GPBaseViewController.m in Sources */,
 				1861ECC425E2BB0000C77ACC /* GPDayModel.m in Sources */,
 				185C9B1925B5CE6000AEED03 /* ViewController.m in Sources */,
+				6E47175A265BFDDE00174EA3 /* GPRequestArgumentModel.m in Sources */,
 				18DBD44C25E246A300735E15 /* GPCodeManager.m in Sources */,
+				6EF204D426E34DBC00EE0586 /* GPDayLineModel.m in Sources */,
 				18DBD45E25E2483200735E15 /* GPMainViewController.m in Sources */,
+				6EF204C226E34A0D00EE0586 /* GPDayLineViewController.m in Sources */,
 				185C9B1325B5CE6000AEED03 /* AppDelegate.m in Sources */,
+				6EF204C626E34A7300EE0586 /* GPDayLineView.m in Sources */,
 				185C9B2425B5CE6200AEED03 /* main.m in Sources */,
+				6E65BF1D2652631A001FFDC1 /* GPAllViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XCL3BJXWK5;
 				INFOPLIST_FILE = GPFX/System/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,6 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XCL3BJXWK5;
 				INFOPLIST_FILE = GPFX/System/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

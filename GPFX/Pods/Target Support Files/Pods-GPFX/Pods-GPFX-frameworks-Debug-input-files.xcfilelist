@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-GPFX/Pods-GPFX-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework
 ${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework

@@ -7,5 +7,7 @@ target 'GPFX' do
 
   # Pods for GPFX
   pod 'Masonry', '~> 1.1.0'
-
+  pod 'MJExtension', '~> 3.2.4'
+  pod 'AFNetworking', '~> 4.0.1'
+  
 end

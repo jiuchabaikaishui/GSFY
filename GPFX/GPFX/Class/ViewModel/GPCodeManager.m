@@ -7,7 +7,7 @@
 //
 
 #import "GPCodeManager.h"
-#import "GPDayModel.h"
+#import "MJExtension.h"
 
 /// 公司电脑路径
 #define kGPFXCachePath      @"/Users/suzheng/QSP/Learn/GSFY/GPFX/GPFX/GPCodeCache"
@@ -247,6 +247,79 @@
     }
     
     return result;
+}
+
+
+/// 读取数据
+/// @param code 股票代码
+/// @param url 文件地址
+/// @param success 成功回调
+/// @param fail 失败回调
+- (void)readData:(NSString *)code from:(NSURL *)url successful:(void(^)(NSArray<GPDayModel *> *models))success failure:(void (^)(NSError *error))fail {
+    unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSError *readError = nil;
+    NSString *str = [[NSString alloc] initWithContentsOfURL:url encoding:encode error:&readError];
+    if (readError) {
+        NSLog(@"%@读取失败！", code);
+        NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:0001 userInfo:@{@"massage": @"数据读取失败！", @"code": code}];
+        fail(error);
+    } else {
+        NSArray *days = [str componentsSeparatedByString:@"\n"];
+        if (days.count > 2) { // 取出第一排表头
+            NSLog(@"----%@----", code);
+            NSMutableArray *result = [NSMutableArray arrayWithCapacity:1];
+            for (int i = 1; i < days.count - 1; i++) {
+                NSString *day = [days objectAtIndex:i];
+                NSArray *data = [day componentsSeparatedByString:@","];
+                if (data.count >= 10) {
+                    GPDayModel *model = [[GPDayModel alloc] init];
+                    model.date = [data objectAtIndex:0];
+                    model.code = [data objectAtIndex:1];
+                    model.name = [data objectAtIndex:2];
+                    model.TCLOSE = [[data objectAtIndex:3] floatValue];
+                    model.HIGH = [[data objectAtIndex:4] floatValue];
+                    model.LOW = [[data objectAtIndex:5] floatValue];
+                    model.TOPEN = [[data objectAtIndex:6] floatValue];
+                    model.LCLOSE = [[data objectAtIndex:7] floatValue];
+                    model.CHG = [[data objectAtIndex:8] floatValue];
+                    model.PCHG = [[data objectAtIndex:9] floatValue];
+                    model.TURNOVER = [[data objectAtIndex:10] floatValue];
+                    model.VOTURNOVER = [[data objectAtIndex:11] floatValue];
+                    model.VATURNOVER = [[data objectAtIndex:12] floatValue];
+                    model.TCAP = [[data objectAtIndex:13] floatValue];
+                    model.MCAP = [[data objectAtIndex:14] floatValue];
+                    [result addObject:model];
+                }
+            }
+            success(result);
+        } else {
+            NSLog(@"%@没有数据！", code);
+            NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:0002 userInfo:@{@"massage": @"没有数据！", @"code": code}];
+            fail(error);
+        }
+    }
+}
+
+- (void)requestData:(NSString *)code startDate:(NSString *)start endDate:(NSString *)end successful:(void(^)(NSArray<GPDayModel *> *models))success failure:(void (^)(NSError *error))fail {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSString *labelCode = [self labelCode:code first:YES];
+        if (labelCode == nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:0000 userInfo:@{@"massage": @"股票代码有误"}];
+                fail(error);
+            });
+        }
+        NSString *path = [NSString stringWithFormat:@"http://quotes.money.163.com/service/chddata.html?code=%@&start=%@&end=%@", labelCode, start, end];
+        NSLog(@"%@", path);
+        NSURL *url = [NSURL URLWithString:path];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self readData:code from:location successful:success failure:fail];
+            });
+        }];
+        [task resume];
+    });
 }
 
 @end

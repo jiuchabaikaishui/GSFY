@@ -41,6 +41,11 @@
 /// 流通市值
 @property (assign, nonatomic) float MCAP;
 
+/// 最大
+@property (assign, nonatomic) BOOL max;
+/// 最小
+@property (assign, nonatomic) BOOL min;
+
 //TCLOSE收盘价
 //HIGH最高价
 //LOW最低价

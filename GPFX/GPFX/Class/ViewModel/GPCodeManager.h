@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "GPDayModel.h"
 
+/// Documents目录
+#define kGPFXDocumentsPath      [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/"]
+/// 所有股票代码目录
+#define kGPFXAllCodePath        [kGPFXDocumentsPath stringByAppendingPathComponent:@"GPAllCode.plist"]
+/// 仙人指路目录
+#define kGPFXUpCodePath         [kGPFXDocumentsPath stringByAppendingPathComponent:@"GPAllUpCode.plist"]
+/// 金针探底目录
+#define kGPFXDownCodePath       [kGPFXDocumentsPath stringByAppendingPathComponent:@"GPAllDownCode.plist"]
+
 @interface GPCodeManager : NSObject
 
 /// 检索沪市A股票代码（600、601或603打头）

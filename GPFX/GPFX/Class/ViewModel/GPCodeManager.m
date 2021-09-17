@@ -14,6 +14,13 @@
 /// 自己电脑路径
 //#define kGPFXCachePath      @"/Users/apple/MyWork/GSFY/GPFX/GPFX/GPCodeCache"
 
+/// 股票代码有误
+#define kGPCodeErrorErrorCode           0000
+/// 读取数据出错
+#define kGPReadDataErrorCode            0001
+/// 没有数据
+#define kGPNoDataErrorCode              0002
+
 @interface GPCodeManager ()
 
 @property (strong, nonatomic) NSMutableArray *allCode;
@@ -117,11 +124,11 @@
                     }
                     float value = up - down;
                     if (value > 0 && down - model.LOW > value*3) {
-                        [self.allUp addObject:code];
+                        [self.allUp addObject:[[data firstObject] mj_JSONObject]];
                         break;
                     }
                     if (value > 0 && model.HIGH - up > value*3) {
-                        [self.allDown addObject:code];
+                        [self.allDown addObject:[[data firstObject] mj_JSONObject]];
                         break;
                     }
                 }
@@ -140,8 +147,11 @@
         nextCode = [NSString stringWithFormat:@"%06i", [code intValue] + 1];
     } else {
         [self.allCode writeToFile:[NSString stringWithFormat:@"%@/AllCode.plist", kGPFXCachePath] atomically:YES];
+        [self.allCode writeToFile:kGPFXAllCodePath atomically:YES];
         [self.allUp writeToFile:[NSString stringWithFormat:@"%@/AllUp.plist", kGPFXCachePath] atomically:YES];
+        [self.allUp writeToFile:kGPFXUpCodePath atomically:YES];
         [self.allDown writeToFile:[NSString stringWithFormat:@"%@/AllDown.plist", kGPFXCachePath] atomically:YES];
+        [self.allDown writeToFile:kGPFXDownCodePath atomically:YES];
         self.count = 0;
         if ([code hasPrefix:@"600"]) {
             nextCode = [NSString stringWithFormat:@"601%03i", self.count];
@@ -211,8 +221,6 @@
     } else {
         NSArray *days = [str componentsSeparatedByString:@"\n"];
         if (days.count > 2) { // 取出第一排表头
-            NSLog(@"----%@----", code);
-            [self.allCode addObject:code];
             for (int i = 2; i < days.count; i++) {
                 NSString *day = [days objectAtIndex:i];
                 NSArray *data = [day componentsSeparatedByString:@","];
@@ -235,6 +243,10 @@
                     model.MCAP = [[data objectAtIndex:14] floatValue];
                     [result addObject:model];
                 }
+            }
+            NSLog(@"----%@----", code);
+            if (result.count > 0) {
+                [self.allCode addObject:[[result firstObject] mj_JSONObject]];
             }
             [self errorAndCompletionControl:code];
         } else {
@@ -261,7 +273,7 @@
     NSString *str = [[NSString alloc] initWithContentsOfURL:url encoding:encode error:&readError];
     if (readError) {
         NSLog(@"%@读取失败！", code);
-        NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:0001 userInfo:@{@"massage": @"数据读取失败！", @"code": code}];
+        NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:kGPReadDataErrorCode userInfo:@{@"massage": @"数据读取失败！", @"code": code}];
         fail(error);
     } else {
         NSArray *days = [str componentsSeparatedByString:@"\n"];
@@ -294,7 +306,7 @@
             success(result);
         } else {
             NSLog(@"%@没有数据！", code);
-            NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:0002 userInfo:@{@"massage": @"没有数据！", @"code": code}];
+            NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:kGPNoDataErrorCode userInfo:@{@"massage": @"没有数据！", @"code": code}];
             fail(error);
         }
     }
@@ -305,7 +317,7 @@
         NSString *labelCode = [self labelCode:code first:YES];
         if (labelCode == nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:0000 userInfo:@{@"massage": @"股票代码有误"}];
+                NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain code:kGPCodeErrorErrorCode userInfo:@{@"massage": @"股票代码有误"}];
                 fail(error);
             });
         }

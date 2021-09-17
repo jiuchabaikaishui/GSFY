@@ -25,7 +25,7 @@
     UINavigationController *allNav = [[UINavigationController alloc] initWithRootViewController:all];
     
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = @[mainNav, allNav];
+    tabBarController.viewControllers = @[allNav, mainNav];
     
     
     self.window = [[UIWindow alloc] init];

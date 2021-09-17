@@ -38,6 +38,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    GPDayModel *model = [self.models firstObject];
+    self.title = [NSString stringWithFormat:@"%@%@", model.name, model.code];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     GPDayLineView *view = [[GPDayLineView alloc] init];
     view.datas = self.models;
     [self.view addSubview:view];

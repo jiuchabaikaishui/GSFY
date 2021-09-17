@@ -21,6 +21,7 @@
     [super viewDidLoad];
     
     self.title = @"主要功能";
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"更新数据" forState:UIControlStateNormal];
@@ -38,10 +39,10 @@
 - (void)updateActoin:(UIButton *)sender {
     GPCodeManager *manager = [[GPCodeManager alloc] init];
 //    [manager searchSHCodeFromCache:NO];
-    [manager requestData:@"600031" startDate:@"20210801" endDate:@"20210904" successful:^(NSArray<GPDayModel *> *models) {
+    [manager requestData:@"600031" startDate:@"20210601" endDate:@"20210906" successful:^(NSArray<GPDayModel *> *models) {
         NSLog(@"请求成功");
         GPDayLineViewController *controller = [[GPDayLineViewController alloc] init];
-        controller.models = models;
+        controller.models = [models subarrayWithRange:NSMakeRange(0, 67)];
         [self.navigationController pushViewController:controller animated:YES];
     } failure:^(NSError *error) {
         NSLog(@"请求失败");

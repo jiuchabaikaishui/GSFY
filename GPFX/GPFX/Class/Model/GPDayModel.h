@@ -33,13 +33,13 @@
 /// 换手率
 @property (assign, nonatomic) float TURNOVER;
 /// 成交量
-@property (assign, nonatomic) float VOTURNOVER;
+@property (assign, nonatomic) double VOTURNOVER;
 /// 成交金额
-@property (assign, nonatomic) float VATURNOVER;
+@property (assign, nonatomic) double VATURNOVER;
 /// 总市值
-@property (assign, nonatomic) float TCAP;
+@property (assign, nonatomic) double TCAP;
 /// 流通市值
-@property (assign, nonatomic) float MCAP;
+@property (assign, nonatomic) double MCAP;
 
 /// 最大
 @property (assign, nonatomic) BOOL max;

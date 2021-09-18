@@ -249,11 +249,11 @@
                 self.maxModel = model;
                 self.maxModel.max = YES;
             }
-            if (model.LOW < self.minModel.LOW) {
-                self.minModel.min = NO;
+            if (self.minModel == nil) {
                 self.minModel = model;
                 self.minModel.min = YES;
-            } else if (self.minModel == nil) {
+            } else if (model.LOW < self.minModel.LOW) {
+                self.minModel.min = NO;
                 self.minModel = model;
                 self.minModel.min = YES;
             }

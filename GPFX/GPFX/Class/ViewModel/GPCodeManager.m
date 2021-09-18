@@ -220,28 +220,31 @@
         }
     } else {
         NSArray *days = [str componentsSeparatedByString:@"\n"];
-        if (days.count > 2) { // 取出第一排表头
+        if (days.count > 2) { // 取出第一排表头，最后一排空串
             for (int i = 2; i < days.count; i++) {
                 NSString *day = [days objectAtIndex:i];
                 NSArray *data = [day componentsSeparatedByString:@","];
                 if (data.count >= 10) {
-                    GPDayModel *model = [[GPDayModel alloc] init];
-                    model.date = [data objectAtIndex:0];
-                    model.code = [data objectAtIndex:1];
-                    model.name = [data objectAtIndex:2];
-                    model.TCLOSE = [[data objectAtIndex:3] floatValue];
-                    model.HIGH = [[data objectAtIndex:4] floatValue];
-                    model.LOW = [[data objectAtIndex:5] floatValue];
-                    model.TOPEN = [[data objectAtIndex:6] floatValue];
-                    model.LCLOSE = [[data objectAtIndex:7] floatValue];
-                    model.CHG = [[data objectAtIndex:8] floatValue];
-                    model.PCHG = [[data objectAtIndex:9] floatValue];
-                    model.TURNOVER = [[data objectAtIndex:10] floatValue];
-                    model.VOTURNOVER = [[data objectAtIndex:11] floatValue];
-                    model.VATURNOVER = [[data objectAtIndex:12] floatValue];
-                    model.TCAP = [[data objectAtIndex:13] floatValue];
-                    model.MCAP = [[data objectAtIndex:14] floatValue];
-                    [result addObject:model];
+                    float open = [[data objectAtIndex:6] floatValue];
+                    if (open > 0) {
+                        GPDayModel *model = [[GPDayModel alloc] init];
+                        model.date = [data objectAtIndex:0];
+                        model.code = [data objectAtIndex:1];
+                        model.name = [data objectAtIndex:2];
+                        model.TCLOSE = [[data objectAtIndex:3] floatValue];
+                        model.HIGH = [[data objectAtIndex:4] floatValue];
+                        model.LOW = [[data objectAtIndex:5] floatValue];
+                        model.TOPEN = open;
+                        model.LCLOSE = [[data objectAtIndex:7] floatValue];
+                        model.CHG = [[data objectAtIndex:8] floatValue];
+                        model.PCHG = [[data objectAtIndex:9] floatValue];
+                        model.TURNOVER = [[data objectAtIndex:10] floatValue];
+                        model.VOTURNOVER = [[data objectAtIndex:11] doubleValue];
+                        model.VATURNOVER = [[data objectAtIndex:12] doubleValue];
+                        model.TCAP = [[data objectAtIndex:13] doubleValue];
+                        model.MCAP = [[data objectAtIndex:14] doubleValue];
+                        [result addObject:model];
+                    }
                 }
             }
             NSLog(@"----%@----", code);
@@ -277,30 +280,33 @@
         fail(error);
     } else {
         NSArray *days = [str componentsSeparatedByString:@"\n"];
-        if (days.count > 2) { // 取出第一排表头
+        if (days.count > 2) { // 取出第一排表头，最后一排空串
             NSLog(@"----%@----", code);
             NSMutableArray *result = [NSMutableArray arrayWithCapacity:1];
             for (int i = 1; i < days.count - 1; i++) {
                 NSString *day = [days objectAtIndex:i];
                 NSArray *data = [day componentsSeparatedByString:@","];
                 if (data.count >= 10) {
-                    GPDayModel *model = [[GPDayModel alloc] init];
-                    model.date = [data objectAtIndex:0];
-                    model.code = [data objectAtIndex:1];
-                    model.name = [data objectAtIndex:2];
-                    model.TCLOSE = [[data objectAtIndex:3] floatValue];
-                    model.HIGH = [[data objectAtIndex:4] floatValue];
-                    model.LOW = [[data objectAtIndex:5] floatValue];
-                    model.TOPEN = [[data objectAtIndex:6] floatValue];
-                    model.LCLOSE = [[data objectAtIndex:7] floatValue];
-                    model.CHG = [[data objectAtIndex:8] floatValue];
-                    model.PCHG = [[data objectAtIndex:9] floatValue];
-                    model.TURNOVER = [[data objectAtIndex:10] floatValue];
-                    model.VOTURNOVER = [[data objectAtIndex:11] floatValue];
-                    model.VATURNOVER = [[data objectAtIndex:12] floatValue];
-                    model.TCAP = [[data objectAtIndex:13] floatValue];
-                    model.MCAP = [[data objectAtIndex:14] floatValue];
-                    [result addObject:model];
+                    float open = [[data objectAtIndex:6] floatValue];
+                    if (open > 0) {
+                        GPDayModel *model = [[GPDayModel alloc] init];
+                        model.date = [data objectAtIndex:0];
+                        model.code = [data objectAtIndex:1];
+                        model.name = [data objectAtIndex:2];
+                        model.TCLOSE = [[data objectAtIndex:3] floatValue];
+                        model.HIGH = [[data objectAtIndex:4] floatValue];
+                        model.LOW = [[data objectAtIndex:5] floatValue];
+                        model.TOPEN = open;
+                        model.LCLOSE = [[data objectAtIndex:7] floatValue];
+                        model.CHG = [[data objectAtIndex:8] floatValue];
+                        model.PCHG = [[data objectAtIndex:9] floatValue];
+                        model.TURNOVER = [[data objectAtIndex:10] floatValue];
+                        model.VOTURNOVER = [[data objectAtIndex:11] floatValue];
+                        model.VATURNOVER = [[data objectAtIndex:12] floatValue];
+                        model.TCAP = [[data objectAtIndex:13] floatValue];
+                        model.MCAP = [[data objectAtIndex:14] floatValue];
+                        [result addObject:model];
+                    }
                 }
             }
             success(result);

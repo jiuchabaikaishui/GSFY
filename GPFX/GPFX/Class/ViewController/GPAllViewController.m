@@ -77,7 +77,11 @@
     [manager requestData:[model.code substringFromIndex:1] startDate:@"20210601" endDate:@"20210906" successful:^(NSArray<GPDayModel *> *models) {
         NSLog(@"请求成功");
         GPDayLineViewController *controller = [[GPDayLineViewController alloc] init];
-        controller.models = [models subarrayWithRange:NSMakeRange(0, 67)];
+        if (models.count >= 67) {
+            controller.models = [models subarrayWithRange:NSMakeRange(0, 67)];
+        } else {
+            controller.models = models;
+        }
         [self.navigationController pushViewController:controller animated:YES];
     } failure:^(NSError *error) {
         NSLog(@"请求失败");

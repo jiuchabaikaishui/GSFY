@@ -88,4 +88,26 @@
     }];
 }
 
+/*
+ 
+ RSV = (5.5-4.58)/(6.52-4.58)*100 = 0.92/1.94*100 = 47.42
+ 
+ */
+- (void)calculateKDJ:(NSArray<GPDayModel *> *)models {
+    float h = 0.0f;
+    float l = MAXFLOAT;
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:1];
+    for (NSInteger i = models.count - 1; i >= 0; i--) {
+        GPDayModel *model = [models objectAtIndex:i];
+        if (i == models.count - 1) {
+            [result addObject:@{@"date": model.date, @"k": @"50", @"d": @"50", @"j": @"50"}];
+        } else {
+            // 1、找最大/小值
+            h = model.HIGH > h ? model.HIGH : h;
+            l = model.LOW < l ? model.LOW : l;
+            
+        }
+    }
+}
+
 @end

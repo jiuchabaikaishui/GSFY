@@ -10,4 +10,6 @@
 
 @implementation GPDayModel
 
+
+
 @end

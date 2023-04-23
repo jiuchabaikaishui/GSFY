@@ -12,6 +12,7 @@
 #import "GPDayModel.h"
 #import "MJExtension.h"
 #import "GPDayLineViewController.h"
+#import "GPCalculateModel.h"
 
 @interface GPAllViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -24,7 +25,12 @@
 
 - (NSArray<GPDayModel *> *)models {
     if (_models == nil) {
-        _models = [GPDayModel mj_objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:kGPFXAllCodePath]];
+        NSMutableArray *mArr = [GPDayModel mj_objectArrayWithKeyValuesArray:[NSArray arrayWithContentsOfFile:kGPFXAllCodePath]];
+        GPDayModel *model = [[GPDayModel alloc] init];
+        model.name = @"中国海油";
+        model.code = @"'600938";
+        [mArr insertObject:model atIndex:0];
+        _models = mArr;
     }
     
     return _models;
@@ -74,7 +80,11 @@
     
     GPDayModel *model = [self.models objectAtIndex:indexPath.row];
     GPCodeManager *manager = [[GPCodeManager alloc] init];
-    [manager requestData:[model.code substringFromIndex:1] startDate:@"20210601" endDate:@"20210906" successful:^(NSArray<GPDayModel *> *models) {
+    NSDate *today = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyyMMdd"];
+    NSString *endTate = [formatter stringFromDate:today];
+    [manager requestData:[model.code substringFromIndex:1] startDate:@"20220223" endDate:endTate successful:^(NSArray<GPDayModel *> *models) {
         NSLog(@"请求成功");
         GPDayLineViewController *controller = [[GPDayLineViewController alloc] init];
         if (models.count >= 67) {
@@ -82,32 +92,11 @@
         } else {
             controller.models = models;
         }
+        [GPCalculateModel calculateKDJ:controller.models];
         [self.navigationController pushViewController:controller animated:YES];
     } failure:^(NSError *error) {
         NSLog(@"请求失败");
     }];
-}
-
-/*
- 
- RSV = (5.5-4.58)/(6.52-4.58)*100 = 0.92/1.94*100 = 47.42
- 
- */
-- (void)calculateKDJ:(NSArray<GPDayModel *> *)models {
-    float h = 0.0f;
-    float l = MAXFLOAT;
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:1];
-    for (NSInteger i = models.count - 1; i >= 0; i--) {
-        GPDayModel *model = [models objectAtIndex:i];
-        if (i == models.count - 1) {
-            [result addObject:@{@"date": model.date, @"k": @"50", @"d": @"50", @"j": @"50"}];
-        } else {
-            // 1、找最大/小值
-            h = model.HIGH > h ? model.HIGH : h;
-            l = model.LOW < l ? model.LOW : l;
-            
-        }
-    }
 }
 
 @end

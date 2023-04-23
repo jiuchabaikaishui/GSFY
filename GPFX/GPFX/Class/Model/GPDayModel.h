@@ -59,6 +59,11 @@
 //TCAP总市值
 //MCAP流通市值
 
+/// kdj属性
+@property (assign, nonatomic) float k;
+@property (assign, nonatomic) float d;
+@property (assign, nonatomic) float j;
+
 @end
 
 NS_ASSUME_NONNULL_BEGIN

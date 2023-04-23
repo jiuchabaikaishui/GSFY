@@ -25,6 +25,7 @@
 		18DBD45E25E2483200735E15 /* GPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DBD45D25E2483200735E15 /* GPMainViewController.m */; };
 		6632940B9C6BFAAB00EC71C2 /* Pods_GPFX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EBE10BAB888CB7EC0B66E0 /* Pods_GPFX.framework */; };
 		6E47175A265BFDDE00174EA3 /* GPRequestArgumentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E471759265BFDDE00174EA3 /* GPRequestArgumentModel.m */; };
+		6E5B4E1D28557DFA00548D28 /* GPCalculateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B4E1C28557DF900548D28 /* GPCalculateModel.m */; };
 		6E65BF1D2652631A001FFDC1 /* GPAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E65BF1C2652631A001FFDC1 /* GPAllViewController.m */; };
 		6E969BD526F5E89C005826D3 /* GPDayDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E969BD426F5E89C005826D3 /* GPDayDetailView.m */; };
 		6EF204C226E34A0D00EE0586 /* GPDayLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF204C126E34A0D00EE0586 /* GPDayLineViewController.m */; };
@@ -61,6 +62,8 @@
 		65EBE10BAB888CB7EC0B66E0 /* Pods_GPFX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPFX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E471758265BFDDE00174EA3 /* GPRequestArgumentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPRequestArgumentModel.h; sourceTree = "<group>"; };
 		6E471759265BFDDE00174EA3 /* GPRequestArgumentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPRequestArgumentModel.m; sourceTree = "<group>"; };
+		6E5B4E1B28557DF900548D28 /* GPCalculateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPCalculateModel.h; sourceTree = "<group>"; };
+		6E5B4E1C28557DF900548D28 /* GPCalculateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPCalculateModel.m; sourceTree = "<group>"; };
 		6E65BF1B2652631A001FFDC1 /* GPAllViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAllViewController.h; sourceTree = "<group>"; };
 		6E65BF1C2652631A001FFDC1 /* GPAllViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAllViewController.m; sourceTree = "<group>"; };
 		6E969BD326F5E89C005826D3 /* GPDayDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPDayDetailView.h; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 		18DBD45525E2473A00735E15 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6E5B4E1B28557DF900548D28 /* GPCalculateModel.h */,
+				6E5B4E1C28557DF900548D28 /* GPCalculateModel.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				6EF204D426E34DBC00EE0586 /* GPDayLineModel.m in Sources */,
 				18DBD45E25E2483200735E15 /* GPMainViewController.m in Sources */,
 				6EF204C226E34A0D00EE0586 /* GPDayLineViewController.m in Sources */,
+				6E5B4E1D28557DFA00548D28 /* GPCalculateModel.m in Sources */,
 				185C9B1325B5CE6000AEED03 /* AppDelegate.m in Sources */,
 				6EF204C626E34A7300EE0586 /* GPDayLineView.m in Sources */,
 				185C9B2425B5CE6200AEED03 /* main.m in Sources */,

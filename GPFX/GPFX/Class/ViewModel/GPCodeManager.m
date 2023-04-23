@@ -143,7 +143,7 @@
 - (void)errorAndCompletionControl:(NSString *)code {
     self.count++;
     NSString *nextCode = nil;
-    if (self.count < 1000) {
+    if (self.count < 999) {
         nextCode = [NSString stringWithFormat:@"%06i", [code intValue] + 1];
     } else {
         [self.allCode writeToFile:[NSString stringWithFormat:@"%@/AllCode.plist", kGPFXCachePath] atomically:YES];

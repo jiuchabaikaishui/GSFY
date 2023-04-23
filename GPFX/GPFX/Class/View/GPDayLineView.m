@@ -72,7 +72,12 @@
         CGFloat marginV = 15.0f;
         CGFloat lineW = 1.0f;
         CGFloat scale = (rect.size.height - 2*marginV)/(self.maxModel.HIGH - self.minModel.LOW);
-        CGFloat W = (rect.size.width - spacing*(self.datas.count - 1) - marginH*2)/self.datas.count;
+        CGFloat W = 0.0f;
+        if (self.datas.count < 67) {
+            W = (rect.size.width - spacing*(67 - 1) - marginH*2)/67;
+        } else {
+            W = (rect.size.width - spacing*(self.datas.count - 1) - marginH*2)/self.datas.count;
+        }
         
         // 边框
         CGContextAddRect(context, rect);
@@ -91,7 +96,12 @@
                 }
             }
             
-            CGFloat X = rect.size.width - marginH - W - (spacing + W)*index;
+            CGFloat X = 0.0f;
+            if (self.datas.count < 67) {
+                X = rect.size.width - marginH - W - (spacing + W)*(index + 67 - self.datas.count);
+            } else {
+                X = rect.size.width - marginH - W - (spacing + W)*index;
+            }
             CGFloat Y = 0.0f;
             CGFloat H = 0.0f;
             
@@ -103,6 +113,9 @@
                 // 实体
                 Y = rect.size.height - marginV - (model.TOPEN - self.minModel.LOW)*scale;
                 H = (model.TOPEN - model.TCLOSE)*scale;
+                if (H < 1.0f) {
+                    H = 1.0f;
+                }
                 CGContextAddRect(context, CGRectMake(X, Y, W, H));
                 CGContextDrawPath(context, kCGPathFill);
                 
